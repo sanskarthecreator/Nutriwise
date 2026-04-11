@@ -6,8 +6,9 @@ from fastapi.responses import FileResponse
 import google.generativeai as genai
 from PIL import Image
 
-# --- Put your actual API key here ---
-genai.configure(api_key="AIzaSyBGNri0wkVgfICu4Q78HYyKJW_bFfnFo2k")
+# Change this back to safely grab a hidden key:
+api_key = os.environ.get("GEMINI_API_KEY")
+genai.configure(api_key=api_key)
 
 model = genai.GenerativeModel(
     'gemini-2.5-flash',
