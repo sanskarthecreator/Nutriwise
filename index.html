@@ -2,242 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutriwise</title>
-    <style>
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f6f8; color: #2c3e50; max-width: 600px; margin: 0 auto; padding: 40px 20px; position: relative; }
-        
-        /* Google Translate Tool Styling */
-        #google_translate_element { position: absolute; top: 15px; right: 15px; }
-        .goog-te-gadget-simple { border-radius: 6px; padding: 5px; border: 1px solid #dcdde1 !important; }
-
-        .header { text-align: center; margin-bottom: 40px; margin-top: 30px; }
-        .header h1 { font-size: 36px; margin: 0 0 10px 0; color: #2c3e50; }
-        .header p { font-size: 18px; color: #576574; margin: 0; }
-        
-        .upload-box { background: white; padding: 40px 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; }
-        .upload-box h2 { font-size: 22px; margin: 0 0 25px 0; color: #333; }
-        .action-buttons { display: flex; flex-direction: column; gap: 15px; }
-        input[type="file"] { display: none; }
-        
-        .custom-btn { display: block; width: 100%; padding: 16px; cursor: pointer; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; box-sizing: border-box; transition: opacity 0.2s ease; }
-        .custom-btn:hover { opacity: 0.9; }
-        .gallery-btn { background-color: #3498db; color: white; }
-        .camera-btn { background-color: #27ae60; color: white; }
-
-        .camera-container { display: none; background: black; border-radius: 12px; overflow: hidden; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        #videoElement { width: 100%; max-height: 450px; object-fit: cover; display: block; }
-        .controls { padding: 20px; display: flex; gap: 15px; background: #1e272e; }
-        .close-btn { background-color: #e74c3c; color: white; border: none; border-radius: 8px; padding: 14px 20px; font-weight: 600; cursor: pointer; flex: 1; }
-        .capture-btn { background-color: #27ae60; color: white; border: none; border-radius: 8px; padding: 14px 20px; font-weight: 600; cursor: pointer; flex: 2; }
-        #canvasElement { display: none; }
-        #loading { display: none; text-align: center; margin-top: 25px; font-weight: 600; color: #576574; }
-
-        .results { margin-top: 30px; display: none; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        h3 { color: #2c3e50; margin-top: 0; font-size: 18px; border-bottom: 1px solid #eee; padding-bottom: 10px;}
-
-        .macros { display: flex; justify-content: space-between; background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 25px; border: 1px solid #eee; }
-        .macro-item { text-align: center; color: #576574; font-size: 14px; }
-        .macro-item span { display: block; font-weight: bold; font-size: 22px; color: #2c3e50; margin-top: 5px;}
-
-        .rating-box { text-align: center; margin-bottom: 30px; padding: 20px; border-radius: 8px; }
-        .rating-badge { display: inline-block; padding: 10px 30px; border-radius: 50px; font-size: 24px; font-weight: bold; color: white; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-        .rating-reason { font-size: 15px; color: #2c3e50; font-weight: 500; }
-        
-        .bg-Green { background-color: #20bf6b; box-shadow: 0 4px 15px rgba(32, 191, 107, 0.3); }
-        .bg-Amber { background-color: #f39c12; box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3); }
-        .bg-Red { background-color: #eb3b5a; box-shadow: 0 4px 15px rgba(235, 59, 90, 0.3); }
-        .box-Green { background-color: #e3fbed; border: 1px solid #c2f0d5; }
-        .box-Amber { background-color: #fdf3e2; border: 1px solid #f9e2ba; }
-        .box-Red { background-color: #ffeded; border: 1px solid #ffd1d1; }
-
-        /* THE SIMPLIFIED EXPLANATION BOXES */
-        .issues-box { background: #fff0f0; border-left: 4px solid #ff4757; padding: 20px; margin-bottom: 20px; border-radius: 4px; }
-        .issues-box h4 { margin: 0 0 10px 0; color: #eb3b5a; font-size: 16px;}
-        .issues-box ul { margin: 0 0 0 20px; padding: 0; color: #2f3542; }
-        .issues-box li { margin-bottom: 10px; font-size: 15px; line-height: 1.4; }
-        
-        .alternatives-box { background: #e3fbed; border-left: 4px solid #20bf6b; padding: 20px; border-radius: 4px; margin-bottom: 15px; }
-        .alternatives-box h4 { margin: 0 0 10px 0; color: #20bf6b; font-size: 16px;}
-        .alternatives-box ul { margin: 0 0 0 20px; padding: 0; color: #2d3436; }
-        .alternatives-box li { margin-bottom: 8px; font-size: 16px; font-weight: 600; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nutriwise Ultra</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="google_translate_element"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
 
-    <div class="header">
-        <h1>Nutriwise</h1>
-        <p>Scan your food</p>
-    </div>
-
-    <div class="upload-box" id="mainMenu">
-        <h2>How would you like to scan?</h2>
-        <div class="action-buttons">
-            <label class="custom-btn gallery-btn">
-                <input type="file" id="imageInput" accept="image/*" onchange="uploadFromGallery(event)">
-                Upload from Gallery
-            </label>
-            <button class="custom-btn camera-btn" onclick="openCamera()">Camera Scan</button>
+    <header>
+        <div class="logo reveal">Nutriwise</div>
+        <div class="controls reveal delay-1">
+            <div id="google_translate_element"></div>
+            <button class="btn-icon" onclick="toggleTheme()">🌓</button>
         </div>
-    </div>
+    </header>
 
-    <div class="camera-container" id="cameraUI">
-        <video id="videoElement" autoplay playsinline></video>
-        <div class="controls">
-            <button class="close-btn" onclick="closeCamera()">Cancel</button>
-            <button class="capture-btn" onclick="captureAndAnalyze()">Analyze</button>
-        </div>
-    </div>
-
-    <canvas id="canvasElement"></canvas>
-
-    <div id="loading">Scanning label...</div>
-
-    <div class="results" id="resultsBox">
+    <div id="mainMenu" class="page active">
+        <h1 class="hero-title reveal delay-1">Nutriwise</h1>
+        <p class="hero-subtitle reveal delay-2">know exactly what you are eating.</p>
         
-        <h3>Macros Per Serving</h3>
-        <div class="macros">
-            <div class="macro-item">Protein <span id="val-protein">0g</span></div>
-            <div class="macro-item">Carbs <span id="val-carbs">0g</span></div>
-            <div class="macro-item">Fats <span id="val-fats">0g</span></div>
-            <div class="macro-item">Sugar <span id="val-sugar">0g</span></div>
+        <div class="action-cards reveal delay-3">
+            <div class="card" onclick="openCamera()">
+                <h2>Live Scan</h2>
+                <p>Point your camera at a label.</p>
+            </div>
+            <div class="card" onclick="document.getElementById('imageInput').click()">
+                <h2>Upload Photo</h2>
+                <p>Choose an image from your gallery.</p>
+            </div>
         </div>
+        <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="uploadFromGallery(event)">
+    </div>
 
-        <div id="ratingContainer"></div>
+    <div id="cameraUI" class="page">
+        <div class="camera-wrapper reveal">
+            <video id="videoElement" autoplay playsinline></video>
+            <div class="cam-controls">
+                <button class="cam-btn btn-cancel" onclick="closeCamera()">Cancel</button>
+                <button class="cam-btn btn-capture" onclick="captureAndAnalyze()">Analyze Label</button>
+            </div>
+        </div>
+    </div>
 
-        <h3>Analysis & Alternatives</h3>
-        <div id="flagsContainer"></div>
+    <div id="loadingUI" class="page">
+        <div class="loader-container reveal">
+            <h2>Scanning...</h2>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" id="loadingFill"></div></div>
+            <p id="loadingText">Extracting data...</p>
+        </div>
+    </div>
+
+    <div id="resultsBox" class="page">
+        <div class="results-content-wrapper">
+            
+            <div class="top-split-layout">
+                
+                <div class="preview-col reveal delay-1">
+                    <div class="id-header">
+                        <p>Identified Label</p>
+                        <h2 id="productNameDisplay">Scanning...</h2>
+                    </div>
+                    <div class="scanned-preview-container" onclick="openModal()">
+                        <img id="previewImg" src="" alt="Scanned Food">
+                        <div class="expand-hint">Expand</div>
+                    </div>
+                </div>
+
+                <div class="stats-col reveal delay-2">
+                    <div class="rating-section" id="ratingContainer">
+                        </div>
+                    
+                    <div class="bento-grid">
+                        <div class="macro-card"><span id="val-protein">0g</span><small>Protein</small></div>
+                        <div class="macro-card"><span id="val-carbs">0g</span><small>Carbs</small></div>
+                        <div class="macro-card"><span id="val-fats">0g</span><small>Fats</small></div>
+                        <div class="macro-card"><span id="val-sugar">0g</span><small>Sugar</small></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="reveal delay-3">
+                <h2 class="emphasis-header">Deep Analysis & Better Choices</h2>
+                <div class="analysis-section" id="flagsContainer">
+                    </div>
+            </div>
+
+            <button class="btn-restart reveal delay-4" onclick="resetApp()">Scan Another Item</button>
+        </div>
+    </div>
+
+    <div id="imageModal" onclick="closeModal()">
+        <img id="modalImg" src="">
     </div>
 
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'en', 
-                includedLanguages: 'hi,mr,ta,bn,en', 
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                pageLanguage: 'en', includedLanguages: 'hi,mr,ta,bn,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
         }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <script>
-        const video = document.getElementById('videoElement');
-        const canvas = document.getElementById('canvasElement');
-        const ctx = canvas.getContext('2d');
-        const cameraUI = document.getElementById('cameraUI');
-        const mainMenu = document.getElementById('mainMenu');
-        let currentStream = null;
-
-        function uploadFromGallery(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const formData = new FormData();
-            formData.append("file", file);
-            sendToBackend(formData);
-        }
-
-        async function openCamera() {
-            try {
-                currentStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
-                video.srcObject = currentStream;
-                mainMenu.style.display = 'none';
-                cameraUI.style.display = 'block';
-                document.getElementById('resultsBox').style.display = 'none';
-            } catch (err) { alert("Camera access denied."); }
-        }
-
-        function closeCamera() {
-            if (currentStream) { currentStream.getTracks().forEach(track => track.stop()); }
-            cameraUI.style.display = 'none';
-            mainMenu.style.display = 'block';
-        }
-
-        function captureAndAnalyze() {
-            canvas.width = video.videoWidth; canvas.height = video.videoHeight;
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            canvas.toBlob(async (blob) => {
-                const formData = new FormData();
-                formData.append("file", blob, "scan.jpg");
-                closeCamera();
-                sendToBackend(formData);
-            }, 'image/jpeg', 0.9);
-        }
-
-        async function sendToBackend(formData) {
-            document.getElementById('loading').style.display = 'block';
-            document.getElementById('resultsBox').style.display = 'none';
-
-            try {
-                const response = await fetch("http://127.0.0.1:8000/analyze-label", { method: "POST", body: formData });
-                const jsonResponse = await response.json();
-                
-                if (jsonResponse.status === "success") {
-                    displayResults(jsonResponse.data);
-                } else {
-                    alert("Error: " + jsonResponse.message + "\n\nDetails: " + jsonResponse.error_details);
-                }
-            } catch (error) {
-                alert("Connection Error. Ensure python server is running.");
-            } finally {
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('imageInput').value = ''; 
-            }
-        }
-
-        function displayResults(data) {
-            document.getElementById('resultsBox').style.display = 'block';
-
-            // MACROS (Safe fallbacks)
-            const m = data.macros || {};
-            document.getElementById('val-protein').innerText = (m.protein_g || m.protein || 0) + 'g';
-            document.getElementById('val-carbs').innerText = (m.carbs_g || m.carbs || 0) + 'g';
-            document.getElementById('val-fats').innerText = (m.fats_g || m.fats || m.fat || 0) + 'g';
-            document.getElementById('val-sugar').innerText = (m.sugar_g || m.sugar || 0) + 'g';
-
-            // RATING
-            const ratingContainer = document.getElementById('ratingContainer');
-            let colorCode = "Amber"; 
-            const aiRating = data.rating || "";
-            if(aiRating.includes("Green") || aiRating.includes("Healthy")) colorCode = "Green";
-            if(aiRating.includes("Red") || aiRating.includes("Unhealthy")) colorCode = "Red";
-
-            ratingContainer.innerHTML = `
-                <div class="rating-box box-${colorCode}">
-                    <div class="rating-badge bg-${colorCode}">${colorCode.toUpperCase()}</div>
-                    <div class="rating-reason">${data.rating_reason || "Analyzed based on ingredients."}</div>
-                </div>
-            `;
-
-            // ONE RED BOX, ONE GREEN BOX
-            const flagsContainer = document.getElementById('flagsContainer');
-            flagsContainer.innerHTML = ''; 
-            
-            if (!data.red_flags || data.red_flags.length === 0) {
-                flagsContainer.innerHTML = `<p style="text-align:center;">Looks clean! No harmful ingredients detected.</p>`;
-            } else {
-                
-                // Compile Red Box
-                let issuesHtml = `<div class="issues-box"><h4>⚠️ Harmful Ingredients Found</h4><ul>`;
-                data.red_flags.forEach(flag => {
-                    issuesHtml += `<li><b>${flag.ingredient || "Ingredient"}:</b> ${flag.issue || "Potential health concern"}</li>`;
-                });
-                issuesHtml += `</ul></div>`;
-
-                // Compile Green Box
-                let altHtml = '';
-                if (data.healthy_alternatives && data.healthy_alternatives.length > 0) {
-                    altHtml = `<div class="alternatives-box"><h4>💡 Try These Instead</h4><ul>`;
-                    data.healthy_alternatives.forEach(alt => {
-                        altHtml += `<li>${alt}</li>`;
-                    });
-                    altHtml += `</ul></div>`;
-                }
-
-                flagsContainer.innerHTML = issuesHtml + altHtml;
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
