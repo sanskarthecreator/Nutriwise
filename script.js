@@ -115,7 +115,7 @@ async function uploadFromGallery(event) {
 async function sendToBackend(formData) {
     startLoading();
     try {
-        const response = await fetch("http://127.0.0.1:8000/analyze-label", { 
+       const response = await fetch("/analyze-label", { 
             method: "POST", 
             body: formData 
         });
