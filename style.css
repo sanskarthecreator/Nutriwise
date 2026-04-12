@@ -7,7 +7,8 @@
     --bg-1: #e0f2f1; --bg-2: #c8e6c9; --bg-3: #f1f8e9;
     --glass-bg: rgba(255, 255, 255, 0.4);
     --glass-border: rgba(255, 255, 255, 0.6);
-    --text-main: #1e272e; --text-muted: #485460;
+    --text-main: #ffffff; 
+    --text-muted: #e0e0e0; 
     --accent: #05c46b;
     --orb-1: rgba(5, 196, 107, 0.3);
     --orb-2: rgba(249, 240, 71, 0.3);
@@ -18,7 +19,8 @@
     --bg-1: #0a1410; --bg-2: #0f1c16; --bg-3: #080d0a;
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.08);
-    --text-main: #ffffff; --text-muted: #9ca3af;
+    --text-main: #ffffff;
+    --text-muted: #d0d0d0;
     --accent: #0be881;
     --orb-1: rgba(11, 232, 129, 0.08);
     --orb-2: rgba(249, 240, 71, 0.05);
@@ -30,6 +32,7 @@
     margin: 0; 
     padding: 0; 
     font-family: 'Montserrat', -apple-system, sans-serif; 
+    color: var(--text-main); 
     transition: background 0.4s ease, color 0.4s ease; 
 }
 
@@ -103,64 +106,68 @@ header {
 
 .controls { display: flex; gap: 12px; align-items: center; }
 
-/* --- THE INVISIBLE OVERLAY HACK --- */
+/* The Language Pill Background */
 .lang-wrapper {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: 50px;
     height: 40px;
+    min-width: 175px; 
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.02);
     padding: 0 15px; 
-    position: relative; 
-    overflow: hidden; 
-    cursor: pointer;
 }
 
-/* Desktop UI */
-.lang-label {
-    font-weight: 700;
-    font-size: 0.95rem;
-    margin-right: 12px;
-    color: var(--text-main);
-}
-.lang-icon {
-    display: none; /* Hidden on desktop */
-    font-size: 1.1rem;
-    margin-right: 10px;
-    color: var(--text-main);
-}
-.lang-divider {
-    width: 1px;
-    height: 16px;
-    background-color: var(--text-muted);
-    opacity: 0.5;
-    margin-right: 12px;
-}
-.lang-arrow {
-    font-size: 0.8rem;
-    color: var(--text-main);
-}
-
-/* The Invisible Trap */
-.google-overlay {
-    position: absolute;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    opacity: 0; 
-    z-index: 10; 
-}
+/* Force Google Translate to fit the pill */
 .goog-te-gadget-simple {
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
+    background-color: transparent !important;
+    border: none !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.95rem !important;
     padding: 0 !important;
-    box-sizing: border-box !important;
     cursor: pointer !important;
+    opacity: 0; 
+    animation: smoothFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+}
+
+@keyframes smoothFadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.goog-te-menu-value {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.goog-te-gadget-simple * {
+    color: white !important;
+    font-weight: 700 !important;
+}
+
+.goog-te-gadget-simple a,
+.goog-te-gadget-simple span {
+    color: white !important;
+}
+
+.goog-te-gadget-simple img { display: none !important; }
+
+.goog-te-menu-value span:nth-child(1) {
+    margin-right: 12px !important; 
+}
+
+.goog-te-menu-value span:nth-child(3) {
+    border-left: 1px solid white !important; 
+    margin-right: 12px !important; 
+    padding-left: 0 !important; 
+    opacity: 0.5; 
+}
+
+.goog-te-menu-value span:nth-child(5) {
+    font-size: 0.8rem !important;
+    color: white !important; 
 }
 
 /* The Theme Pill */
@@ -222,7 +229,7 @@ body { top: 0 !important; position: static !important; }
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 .card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); }
-.card h2 { font-size: 1.6rem; margin-bottom: 10px; font-weight: 700; letter-spacing: -0.5px; }
+.card h2 { font-size: 1.6rem; margin-bottom: 10px; font-weight: 700; letter-spacing: -0.5px; color: white !important;}
 .card p { font-size: 1rem; color: var(--text-muted); line-height: 1.4; font-weight: 500; }
 
 /* =========================================
@@ -231,15 +238,15 @@ body { top: 0 !important; position: static !important; }
 .camera-wrapper { width: 100%; max-width: 800px; background: var(--glass-bg); border-radius: 24px; padding: 20px; border: 1px solid var(--glass-border); margin: 0 auto; }
 #videoElement { width: 100%; max-height: 60vh; border-radius: 16px; background: #000; object-fit: cover; margin-bottom: 20px; }
 .cam-controls { display: flex; gap: 15px; }
-.cam-btn { flex: 1; padding: 15px; border-radius: 16px; border: none; font-size: 1.1rem; font-weight: bold; cursor: pointer; }
-.btn-cancel { background: rgba(255, 71, 87, 0.1); color: #ff4757; }
-.btn-capture { background: var(--text-main); color: var(--bg-1); }
+.cam-btn { flex: 1; padding: 15px; border-radius: 16px; border: none; font-size: 1.1rem; font-weight: bold; cursor: pointer; color: white !important;}
+.btn-cancel { background: rgba(255, 71, 87, 0.1); color: #ff4757 !important; }
+.btn-capture { background: var(--text-main); color: var(--bg-1) !important; }
 
 /* =========================================
    6. LOADING BAR UI
    ========================================= */
 .loader-container { width: 100%; max-width: 400px; text-align: center; margin: 0 auto; margin-top: 15vh; }
-.loader-container h2 { font-size: 2rem; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px;}
+.loader-container h2 { font-size: 2rem; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px; color: white !important;}
 .progress-bar-bg { width: 100%; height: 10px; background: rgba(255,255,255,0.05); border-radius: 50px; overflow: hidden; margin-bottom: 15px; }
 .progress-bar-fill { height: 100%; width: 0%; background: var(--text-main); border-radius: 50px; transition: width 0.3s ease; }
 #loadingText { color: var(--text-muted); font-weight: 600; font-size: 1.1rem; }
@@ -253,15 +260,17 @@ body { top: 0 !important; position: static !important; }
 .preview-col { flex: 1; min-width: 280px; display: flex; flex-direction: column; }
 .id-header { margin-bottom: 15px; }
 .id-header p { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin-bottom: 5px;}
-.id-header h2 { font-size: clamp(1.8rem, 5vw, 2.2rem); font-weight: 900; line-height: 1.1; letter-spacing: -1px;}
+.id-header h2 { font-size: clamp(1.8rem, 5vw, 2.2rem); font-weight: 900; line-height: 1.1; letter-spacing: -1px; color: white !important;}
 .scanned-preview-container { width: 100%; height: 300px; border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); position: relative; cursor: pointer; transition: transform 0.3s ease; }
 .scanned-preview-container:hover { transform: scale(1.02); }
 .scanned-preview-container img { width: 100%; height: 100%; object-fit: cover; }
-.expand-hint { position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); color: white; padding: 6px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: bold; backdrop-filter: blur(5px); }
+.expand-hint { position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); color: white !important; padding: 6px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: bold; backdrop-filter: blur(5px); }
 
 .stats-col { flex: 1.5; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; }
 .rating-section { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; background: var(--glass-bg); border-radius: 20px; padding: 25px; border: 1px solid var(--glass-border); flex: 1; }
-.rating-badge { padding: 8px 24px; border-radius: 100px; font-size: 1.8rem; font-weight: 900; color: #121212; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+
+/* FIXED: Made the text inside the indicator badge pure white! */
+.rating-badge { padding: 8px 24px; border-radius: 100px; font-size: 1.8rem; font-weight: 900; color: #ffffff !important; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
 .rating-reason { font-size: 1rem; font-weight: 500; line-height: 1.5; color: var(--text-main); }
 
 .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; flex: 1; }
@@ -280,7 +289,7 @@ body { top: 0 !important; position: static !important; }
 .good-card li { margin-bottom: 15px; font-size: 1rem; margin-left: 20px; line-height: 1.4; font-weight: 500;}
 .good-card p { font-size: 0.95rem; color: var(--text-muted); margin-top: 6px; line-height: 1.4;}
 
-.btn-restart { display: block; width: 100%; max-width: 350px; margin: 20px auto; padding: 18px; text-align: center; background: var(--text-main); color: var(--bg-1); border-radius: 50px; font-size: 1.1rem; font-weight: 800; cursor: pointer; border: none; transition: transform 0.2s ease; }
+.btn-restart { display: block; width: 100%; max-width: 350px; margin: 20px auto; padding: 18px; text-align: center; background: var(--text-main); color: var(--bg-1) !important; border-radius: 50px; font-size: 1.1rem; font-weight: 800; cursor: pointer; border: none; transition: transform 0.2s ease; }
 .btn-restart:hover { transform: scale(1.02); }
 
 #imageModal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.9); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(15px); cursor: zoom-out; }
@@ -289,28 +298,20 @@ body { top: 0 !important; position: static !important; }
 #imageModal.show #modalImg { transform: scale(1); }
 
 /* =========================================
-   8. MOBILE OPTIMIZATIONS (Lag Killer & Icon Swap)
+   8. MOBILE OPTIMIZATIONS
    ========================================= */
 @media (max-width: 768px) {
-    /* Optimize Mobile Header Space */
     header { padding: 12px 4%; }
     .logo { font-size: 1.2rem; }
     .controls { gap: 8px; }
     
-    /* Swap "Select Language" text for the Globe Icon */
-    .lang-label { display: none; }
-    .lang-icon { display: inline-block; }
-    .lang-wrapper { padding: 0 12px; height: 38px; }
-    .lang-divider { margin-right: 8px; height: 14px; }
+    .lang-wrapper { padding: 0 12px; height: 38px; min-width: auto; }
     
-    /* Shrink the Theme Toggle */
     .btn-icon { width: 45px; height: 38px; font-size: 1rem; }
 
-    /* STOP MOBILE LAG: Kill heavy background animations & blurs */
-    body::before { animation: none; } /* Freezes gradient */
-    .orb { display: none; } /* Removes extremely expensive blur */
+    body::before { animation: none; } 
+    .orb { display: none; } 
 
-    /* Rest of mobile layout adjustments */
     .action-cards { flex-direction: column; gap: 20px; }
     .card { padding: 30px 20px; }
     .top-split-layout { flex-direction: column; gap: 15px; }
