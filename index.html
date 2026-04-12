@@ -4,25 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Nutriwise Ultra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-theme="dark">
 
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
 
     <header>
-        <div class="logo reveal">Nutriwise</div>
+        <div class="logo reveal" onclick="window.location.reload()" title="Go Home">Nutriwise</div>
         <div class="controls reveal delay-1">
-            <div id="google_translate_element"></div>
+            
+            <div class="lang-wrapper">
+                <span class="lang-label">Select Language</span>
+                <div class="lang-divider"></div>
+                <span class="lang-arrow">▼</span>
+                
+                <div id="google_translate_element" class="google-overlay"></div>
+            </div>
+
             <button class="btn-icon" onclick="toggleTheme()">🌓</button>
         </div>
     </header>
 
     <div id="mainMenu" class="page active">
         <h1 class="hero-title reveal delay-1">know exactly what you are eating.</h1>
-        <p class="hero-subtitle reveal delay-2">scan your packaged foods lable here.</p>
+        <p class="hero-subtitle reveal delay-2">scan your packaged foods label here.</p>
         
         <div class="action-cards reveal delay-3">
             <div class="card" onclick="openCamera()">
@@ -59,7 +70,6 @@
         <div class="results-content-wrapper">
             
             <div class="top-split-layout">
-                
                 <div class="preview-col reveal delay-1">
                     <div class="id-header">
                         <p>Identified Label</p>
@@ -72,8 +82,7 @@
                 </div>
 
                 <div class="stats-col reveal delay-2">
-                    <div class="rating-section" id="ratingContainer">
-                        </div>
+                    <div class="rating-section" id="ratingContainer"></div>
                     
                     <div class="bento-grid">
                         <div class="macro-card"><span id="val-protein">0g</span><small>Protein</small></div>
@@ -82,13 +91,11 @@
                         <div class="macro-card"><span id="val-sugar">0g</span><small>Sugar</small></div>
                     </div>
                 </div>
-
             </div>
 
             <div class="reveal delay-3">
                 <h2 class="emphasis-header">Deep Analysis & Better Choices</h2>
-                <div class="analysis-section" id="flagsContainer">
-                    </div>
+                <div class="analysis-section" id="flagsContainer"></div>
             </div>
 
             <button class="btn-restart reveal delay-4" onclick="resetApp()">Scan Another Item</button>
