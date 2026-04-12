@@ -34,7 +34,7 @@
 }
 
 /* =========================================
-   2. BUTTER-SMOOTH MOBILE BACKGROUND FIX
+   2. BACKGROUND & ANIMATIONS
    ========================================= */
 html { height: 100%; }
 
@@ -119,11 +119,17 @@ header {
     cursor: pointer;
 }
 
-/* Hardcoded UI (Loads instantly, exactly like the rest of the page) */
+/* Desktop UI */
 .lang-label {
     font-weight: 700;
     font-size: 0.95rem;
     margin-right: 12px;
+    color: var(--text-main);
+}
+.lang-icon {
+    display: none; /* Hidden on desktop */
+    font-size: 1.1rem;
+    margin-right: 10px;
     color: var(--text-main);
 }
 .lang-divider {
@@ -145,11 +151,9 @@ header {
     left: 0; 
     width: 100%; 
     height: 100%;
-    opacity: 0; /* Makes Google Translate 100% invisible */
-    z-index: 10; /* Keeps it on top so it can be clicked */
+    opacity: 0; 
+    z-index: 10; 
 }
-
-/* Stretches the invisible Google button to fill the whole pill */
 .goog-te-gadget-simple {
     width: 100% !important;
     height: 100% !important;
@@ -285,10 +289,28 @@ body { top: 0 !important; position: static !important; }
 #imageModal.show #modalImg { transform: scale(1); }
 
 /* =========================================
-   8. MOBILE OPTIMIZATIONS
+   8. MOBILE OPTIMIZATIONS (Lag Killer & Icon Swap)
    ========================================= */
 @media (max-width: 768px) {
-    header { padding: 15px 5%; }
+    /* Optimize Mobile Header Space */
+    header { padding: 12px 4%; }
+    .logo { font-size: 1.2rem; }
+    .controls { gap: 8px; }
+    
+    /* Swap "Select Language" text for the Globe Icon */
+    .lang-label { display: none; }
+    .lang-icon { display: inline-block; }
+    .lang-wrapper { padding: 0 12px; height: 38px; }
+    .lang-divider { margin-right: 8px; height: 14px; }
+    
+    /* Shrink the Theme Toggle */
+    .btn-icon { width: 45px; height: 38px; font-size: 1rem; }
+
+    /* STOP MOBILE LAG: Kill heavy background animations & blurs */
+    body::before { animation: none; } /* Freezes gradient */
+    .orb { display: none; } /* Removes extremely expensive blur */
+
+    /* Rest of mobile layout adjustments */
     .action-cards { flex-direction: column; gap: 20px; }
     .card { padding: 30px 20px; }
     .top-split-layout { flex-direction: column; gap: 15px; }
