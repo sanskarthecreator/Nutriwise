@@ -106,68 +106,51 @@ header {
 
 .controls { display: flex; gap: 12px; align-items: center; }
 
-/* The Language Pill Background */
+/* --- THE INVISIBLE OVERLAY HACK (Icon Only) --- */
 .lang-wrapper {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: 50px;
     height: 40px;
-    min-width: 175px; 
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.02);
     padding: 0 15px; 
+    position: relative; 
+    overflow: hidden; 
+    cursor: pointer;
 }
 
-/* Force Google Translate to fit the pill */
+.lang-icon {
+    font-size: 1.2rem;
+    margin-right: 8px;
+    color: var(--text-main);
+}
+
+.lang-arrow {
+    font-size: 0.75rem;
+    color: var(--text-main);
+}
+
+/* The Invisible Trap */
+.google-overlay {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    opacity: 0; /* Keeps Google's duplicate text invisible */
+    z-index: 10; 
+}
+
 .goog-te-gadget-simple {
-    background-color: transparent !important;
-    border: none !important;
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 0.95rem !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
     padding: 0 !important;
+    box-sizing: border-box !important;
     cursor: pointer !important;
-    opacity: 0; 
-    animation: smoothFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
-}
-
-@keyframes smoothFadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-.goog-te-menu-value {
-    display: flex !important;
-    align-items: center !important;
-}
-
-.goog-te-gadget-simple * {
-    color: white !important;
-    font-weight: 700 !important;
-}
-
-.goog-te-gadget-simple a,
-.goog-te-gadget-simple span {
-    color: white !important;
-}
-
-.goog-te-gadget-simple img { display: none !important; }
-
-.goog-te-menu-value span:nth-child(1) {
-    margin-right: 12px !important; 
-}
-
-.goog-te-menu-value span:nth-child(3) {
-    border-left: 1px solid white !important; 
-    margin-right: 12px !important; 
-    padding-left: 0 !important; 
-    opacity: 0.5; 
-}
-
-.goog-te-menu-value span:nth-child(5) {
-    font-size: 0.8rem !important;
-    color: white !important; 
 }
 
 /* The Theme Pill */
@@ -269,7 +252,7 @@ body { top: 0 !important; position: static !important; }
 .stats-col { flex: 1.5; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; }
 .rating-section { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; background: var(--glass-bg); border-radius: 20px; padding: 25px; border: 1px solid var(--glass-border); flex: 1; }
 
-/* FIXED: Made the text inside the indicator badge pure white! */
+/* The white text indicator badge */
 .rating-badge { padding: 8px 24px; border-radius: 100px; font-size: 1.8rem; font-weight: 900; color: #ffffff !important; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
 .rating-reason { font-size: 1rem; font-weight: 500; line-height: 1.5; color: var(--text-main); }
 
@@ -305,10 +288,11 @@ body { top: 0 !important; position: static !important; }
     .logo { font-size: 1.2rem; }
     .controls { gap: 8px; }
     
-    .lang-wrapper { padding: 0 12px; height: 38px; min-width: auto; }
+    .lang-wrapper { padding: 0 12px; height: 38px; }
     
     .btn-icon { width: 45px; height: 38px; font-size: 1rem; }
 
+    /* Performance kill switch for laggy phones */
     body::before { animation: none; } 
     .orb { display: none; } 
 
