@@ -7,8 +7,8 @@
     --bg-1: #e0f2f1; --bg-2: #c8e6c9; --bg-3: #f1f8e9;
     --glass-bg: rgba(255, 255, 255, 0.4);
     --glass-border: rgba(255, 255, 255, 0.6);
-    --text-main: #ffffff; 
-    --text-muted: #e0e0e0; 
+    --text-main: #1e272e; /* Dark text for light theme */
+    --text-muted: #485460;
     --accent: #05c46b;
     --orb-1: rgba(5, 196, 107, 0.3);
     --orb-2: rgba(249, 240, 71, 0.3);
@@ -19,8 +19,8 @@
     --bg-1: #0a1410; --bg-2: #0f1c16; --bg-3: #080d0a;
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.08);
-    --text-main: #ffffff;
-    --text-muted: #d0d0d0;
+    --text-main: #ffffff; /* White text for dark theme */
+    --text-muted: #9ca3af;
     --accent: #0be881;
     --orb-1: rgba(11, 232, 129, 0.08);
     --orb-2: rgba(249, 240, 71, 0.05);
@@ -32,7 +32,7 @@
     margin: 0; 
     padding: 0; 
     font-family: 'Montserrat', -apple-system, sans-serif; 
-    color: var(--text-main); 
+    color: var(--text-main); /* Automatically adapts to theme */
     transition: background 0.4s ease, color 0.4s ease; 
 }
 
@@ -106,7 +106,7 @@ header {
 
 .controls { display: flex; gap: 12px; align-items: center; }
 
-/* --- THE INVISIBLE OVERLAY HACK (Icon Only) --- */
+/* The Language Pill Background */
 .lang-wrapper {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
@@ -140,7 +140,7 @@ header {
     left: 0; 
     width: 100%; 
     height: 100%;
-    opacity: 0; /* Keeps Google's duplicate text invisible */
+    opacity: 0; 
     z-index: 10; 
 }
 
@@ -171,7 +171,6 @@ header {
 }
 .btn-icon:hover { transform: scale(1.05); }
 
-/* Force hide Google's top bar garbage */
 body { top: 0 !important; position: static !important; }
 .skiptranslate iframe { display: none !important; }
 #goog-gt-tt { display: none !important; }
@@ -212,7 +211,7 @@ body { top: 0 !important; position: static !important; }
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 .card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); }
-.card h2 { font-size: 1.6rem; margin-bottom: 10px; font-weight: 700; letter-spacing: -0.5px; color: white !important;}
+.card h2 { font-size: 1.6rem; margin-bottom: 10px; font-weight: 700; letter-spacing: -0.5px; }
 .card p { font-size: 1rem; color: var(--text-muted); line-height: 1.4; font-weight: 500; }
 
 /* =========================================
@@ -221,15 +220,15 @@ body { top: 0 !important; position: static !important; }
 .camera-wrapper { width: 100%; max-width: 800px; background: var(--glass-bg); border-radius: 24px; padding: 20px; border: 1px solid var(--glass-border); margin: 0 auto; }
 #videoElement { width: 100%; max-height: 60vh; border-radius: 16px; background: #000; object-fit: cover; margin-bottom: 20px; }
 .cam-controls { display: flex; gap: 15px; }
-.cam-btn { flex: 1; padding: 15px; border-radius: 16px; border: none; font-size: 1.1rem; font-weight: bold; cursor: pointer; color: white !important;}
-.btn-cancel { background: rgba(255, 71, 87, 0.1); color: #ff4757 !important; }
-.btn-capture { background: var(--text-main); color: var(--bg-1) !important; }
+.cam-btn { flex: 1; padding: 15px; border-radius: 16px; border: none; font-size: 1.1rem; font-weight: bold; cursor: pointer; }
+.btn-cancel { background: rgba(255, 71, 87, 0.1); color: #ff4757; }
+.btn-capture { background: var(--text-main); color: var(--bg-1); }
 
 /* =========================================
    6. LOADING BAR UI
    ========================================= */
 .loader-container { width: 100%; max-width: 400px; text-align: center; margin: 0 auto; margin-top: 15vh; }
-.loader-container h2 { font-size: 2rem; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px; color: white !important;}
+.loader-container h2 { font-size: 2rem; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px; }
 .progress-bar-bg { width: 100%; height: 10px; background: rgba(255,255,255,0.05); border-radius: 50px; overflow: hidden; margin-bottom: 15px; }
 .progress-bar-fill { height: 100%; width: 0%; background: var(--text-main); border-radius: 50px; transition: width 0.3s ease; }
 #loadingText { color: var(--text-muted); font-weight: 600; font-size: 1.1rem; }
@@ -243,7 +242,7 @@ body { top: 0 !important; position: static !important; }
 .preview-col { flex: 1; min-width: 280px; display: flex; flex-direction: column; }
 .id-header { margin-bottom: 15px; }
 .id-header p { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin-bottom: 5px;}
-.id-header h2 { font-size: clamp(1.8rem, 5vw, 2.2rem); font-weight: 900; line-height: 1.1; letter-spacing: -1px; color: white !important;}
+.id-header h2 { font-size: clamp(1.8rem, 5vw, 2.2rem); font-weight: 900; line-height: 1.1; letter-spacing: -1px; }
 .scanned-preview-container { width: 100%; height: 300px; border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); position: relative; cursor: pointer; transition: transform 0.3s ease; }
 .scanned-preview-container:hover { transform: scale(1.02); }
 .scanned-preview-container img { width: 100%; height: 100%; object-fit: cover; }
@@ -252,7 +251,7 @@ body { top: 0 !important; position: static !important; }
 .stats-col { flex: 1.5; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; }
 .rating-section { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; background: var(--glass-bg); border-radius: 20px; padding: 25px; border: 1px solid var(--glass-border); flex: 1; }
 
-/* The white text indicator badge */
+/* THE ONLY THING HARDCODED TO WHITE: The Indicator Badge */
 .rating-badge { padding: 8px 24px; border-radius: 100px; font-size: 1.8rem; font-weight: 900; color: #ffffff !important; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
 .rating-reason { font-size: 1rem; font-weight: 500; line-height: 1.5; color: var(--text-main); }
 
@@ -272,7 +271,7 @@ body { top: 0 !important; position: static !important; }
 .good-card li { margin-bottom: 15px; font-size: 1rem; margin-left: 20px; line-height: 1.4; font-weight: 500;}
 .good-card p { font-size: 0.95rem; color: var(--text-muted); margin-top: 6px; line-height: 1.4;}
 
-.btn-restart { display: block; width: 100%; max-width: 350px; margin: 20px auto; padding: 18px; text-align: center; background: var(--text-main); color: var(--bg-1) !important; border-radius: 50px; font-size: 1.1rem; font-weight: 800; cursor: pointer; border: none; transition: transform 0.2s ease; }
+.btn-restart { display: block; width: 100%; max-width: 350px; margin: 20px auto; padding: 18px; text-align: center; background: var(--text-main); color: var(--bg-1); border-radius: 50px; font-size: 1.1rem; font-weight: 800; cursor: pointer; border: none; transition: transform 0.2s ease; }
 .btn-restart:hover { transform: scale(1.02); }
 
 #imageModal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.9); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(15px); cursor: zoom-out; }
