@@ -179,9 +179,9 @@ function displayResults(data) {
     
     let issuesHtml = "";
     if (!data.red_flags || data.red_flags.length === 0) {
-        issuesHtml = `<div class="info-card alert-card" style="border-color: #05c46b;"><h4 style="color:#05c46b;">✨ All Clear</h4><p style="font-size: 1.2rem;">No harmful artificial ingredients or major red flags detected.</p></div>`;
+        issuesHtml = `<div class="info-card alert-card" style="border-color: #05c46b;"><h4 style="color:#05c46b;">All Clear</h4><p style="font-size: 1.2rem;">No harmful artificial ingredients or major red flags detected.</p></div>`;
     } else {
-        issuesHtml = `<div class="info-card alert-card"><h4>⚠️ Harmful Ingredients Found</h4><ul>`;
+        issuesHtml = `<div class="info-card alert-card"><h4>Harmful Ingredients Found</h4><ul>`;
         data.red_flags.forEach(flag => {
             issuesHtml += `<li><b>${flag.ingredient || "Ingredient"}:</b> ${flag.issue || "Potential health concern"}</li>`;
         });
@@ -190,7 +190,7 @@ function displayResults(data) {
 
     let altHtml = '';
     if (data.healthy_alternatives && data.healthy_alternatives.length > 0) {
-        altHtml = `<div class="info-card good-card"><h4>💡 Superior Whole-Food Swaps</h4><ul>`;
+        altHtml = `<div class="info-card good-card"><h4>Healthier Alternatives</h4><ul>`;
         data.healthy_alternatives.forEach(alt => {
             if (typeof alt === 'string') {
                 altHtml += `<li>${alt}</li>`;
