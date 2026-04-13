@@ -83,6 +83,6 @@ async def analyze_label(file: UploadFile = File(...)):
     except Exception as e:
         return {
             "status": "error",
-            "message": "Failed to parse label.",
-            "error_details": str(e)
+            "message": f"API Error {e.code}",
+            "error_details": str(e.message)
         }
