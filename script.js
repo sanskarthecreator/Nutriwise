@@ -56,7 +56,7 @@ function startLoading() {
         if (progress > 92) progress = 92; 
         bar.style.width = progress + '%';
         if (Math.random() > 0.6) { text.innerText = messages[msgIdx % messages.length]; msgIdx++; }
-    }, 600);
+    }, 1200);
 }
 
 function finishLoading() {
